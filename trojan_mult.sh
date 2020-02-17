@@ -165,8 +165,8 @@ EOF
 	#设置伪装站
 	rm -rf /usr/share/nginx/html/*
 	cd /usr/share/nginx/html/
-	wget https://github.com/atrandys/v2ray-ws-tls/raw/master/web.zip
-    	unzip web.zip
+	wget https://github.com/yang1916/trojan/blob/master/H12.zip
+    	unzip H12.zip
 	systemctl start nginx
 	sleep 5
 	#申请https证书
@@ -190,7 +190,28 @@ EOF
 	unzip /usr/src/trojan-temp/trojan-${latest_version}-win.zip -d /usr/src/trojan-temp/
 	cp /usr/src/trojan-cert/fullchain.cer /usr/src/trojan-cli/fullchain.cer
 	mv -f /usr/src/trojan-temp/trojan/trojan.exe /usr/src/trojan-cli/ 
+	clear
+    	green " ===================================="
+    	green " 1：手动输入密码      "
+    	green " 2：自动输入密码               "
+    	green " ===================================="
+	echo
+	read -p "请输入数字:" num
+    	case "$num" in
+    	1)
+   	manual
+    	;;
+    	2)
+    	auto 
+    	;;
+	
+	
+	function manual(){
+	case "$trojan_passwd" in
+	}
+	function auto(){
 	trojan_passwd=$(cat /dev/urandom | head -1 | md5sum | head -c 8)
+	}
 	cat > /usr/src/trojan-cli/config.json <<-EOF
 {
     "run_type": "client",
@@ -370,7 +391,7 @@ function remove_trojan(){
 
 function update_trojan(){
     green "======================"
-    green "开发中"
+    green "功能尚在开发中"
     green "======================"
 }
 
@@ -379,8 +400,7 @@ start_menu(){
     green " ===================================="
     green " 介绍：一键安装trojan      "
     green " 系统：centos7+/debian9+/ubuntu16.04+"
-    green " 网站：www.atrandys.com              "
-    green " Youtube：Randy's 堡垒                "
+    green " Author by 常乐               "
     green " ===================================="
     echo
     green " 1. 安装trojan"
