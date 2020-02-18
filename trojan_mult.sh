@@ -190,22 +190,6 @@ EOF
 	unzip /usr/src/trojan-temp/trojan-${latest_version}-win.zip -d /usr/src/trojan-temp/
 	cp /usr/src/trojan-cert/fullchain.cer /usr/src/trojan-cli/fullchain.cer
 	mv -f /usr/src/trojan-temp/trojan/trojan.exe /usr/src/trojan-cli/ 
-	clear
-    	green " ===================================="
-    	green " 1：手动输入密码      "
-    	green " 2：自动输入密码               "
-    	green " ===================================="
-	echo
-	read -p "请输入数字:" num
-    	case "$num" in
-    	1)
-   	manual
-    	;;
-    	2)
-    	auto 
-    	;;
-	
-	
 	function manual(){
 	case "$trojan_passwd" in
 	}
